@@ -15,7 +15,7 @@ public class C206_CaseStudy {
 
 
 
-		while (option != 6) {
+		while (option != 5) {
 
 
 
@@ -159,7 +159,7 @@ public class C206_CaseStudy {
 		}else if (option == 4) {
 		// VIEW STUDENTS IN A CCA
 
-		}else if(option == 6) {
+		}else if(option == 5) {
 		System.out.println("Goodbye!");
 		} else {
 		System.out.println("Invalid option!");
