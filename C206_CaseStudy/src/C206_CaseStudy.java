@@ -24,11 +24,11 @@ public class C206_CaseStudy {
 
 
 
-		if (option == 1) {
+		if (option == 0) {
 
 
 
-		} else if (option == 2) {
+		} else if (option == 1) {
 		// Add a new item
 		C206_CaseStudy.setHeader("ADD ");
 		System.out.println("1. Add Student");
@@ -92,7 +92,7 @@ public class C206_CaseStudy {
 
 
 
-		} else if(option == 3) {
+		} else if(option == 2) {
 		// DELETE
 		C206_CaseStudy.setHeader("DELETE ");
 		System.out.println("1. Delete Student");
@@ -123,7 +123,7 @@ public class C206_CaseStudy {
 		System.out.println("Invalid type");
 		}
 
-		}else if(option == 4) {
+		}else if(option == 3) {
 		//VIEW
 		C206_CaseStudy.setHeader("VIEW ");
 		System.out.println("1. View Student");
@@ -156,7 +156,7 @@ public class C206_CaseStudy {
 		}
 
 
-		}else if (option == 5) {
+		}else if (option == 4) {
 		// VIEW STUDENTS IN A CCA
 
 		}else if(option == 6) {
@@ -172,12 +172,11 @@ public class C206_CaseStudy {
 		private static void menu() {
 		// TODO Auto-generated method stub
 		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
-		System.out.println("1. LOGIN");
-		System.out.println("2. ADD");
-		System.out.println("3. DELETE");
-		System.out.println("4. VIEW");
-		System.out.println("5. VIEW STUDENTS REGISTERED IN CCA");
-		System.out.println("6. Quit");
+		System.out.println("1. ADD");
+		System.out.println("2. DELETE");
+		System.out.println("3. VIEW");
+		System.out.println("4. VIEW STUDENTS REGISTERED IN CCA");
+		System.out.println("5. Quit");
 		Helper.line(80, "-");
 		}
 
