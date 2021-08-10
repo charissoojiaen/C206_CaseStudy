@@ -71,10 +71,9 @@ public class C206_CaseStudy {
 		} else if (addType == 2) {
 		// Add CCA Details
 
-
-
 			CCA detail = inputCCADetails();
 			C206_CaseStudy.addCCADetails(ccaList, detail);
+			
 		} else if (addType == 3) {
 		// Add CCA Category
 
@@ -262,76 +261,73 @@ public class C206_CaseStudy {
 	//Vincent's code
 	
 	//Charis's code
-			//Add CCA details
+	//Add CCA details
 			
-					public static CCA inputCCADetails() {
-						String title = Helper.readString("Enter title > ");
-						String description = Helper.readString("Enter description > ");
-						int size = Helper.readInt("Enter class size > ");
-						String dayofWeek = Helper.readString("Enter day of week >");
-						String time = Helper.readString("Enter time >");
-						String venue = Helper.readString("Enter venue >");
-						String inCharge = Helper.readString("Enter instructor-in-charge >");
-						String category = Helper.readString("Enter category >");
+		public static CCA inputCCADetails() {
+			String title = Helper.readString("Enter title > ");
+			String description = Helper.readString("Enter description > ");
+			int size = Helper.readInt("Enter class size > ");
+			String dayofWeek = Helper.readString("Enter day of week >");
+			String time = Helper.readString("Enter time >");
+			String venue = Helper.readString("Enter venue >");
+			String inCharge = Helper.readString("Enter instructor-in-charge >");
+			String category = Helper.readString("Enter category >");
 						
-						CCA detail= new CCA(title, description, size, dayofWeek, time, venue, inCharge, category);
-						return detail;
+			CCA detail= new CCA(title, description, size, dayofWeek, time, venue, inCharge, category);
+			return detail;
 						
-					}
-					public static void addCCADetails(ArrayList<CCA> ccaList, CCA detail) {
+		}
+		
+		public static void addCCADetails(ArrayList<CCA> ccaList, CCA detail) {
 						
-						ccaList.add(detail);
-						System.out.println("CCA added!");
-					}
-			
-					
-					//View all CCAs
-					public static String retrieveAllCCA(ArrayList<CCA> ccaList) {
-						String output = "";
+			ccaList.add(detail);
+			System.out.println("CCA added!");
+		}
+				
+		//View all CCAs
+		public static String retrieveAllCCA(ArrayList<CCA> ccaList) {
+			String output = "";
 
-						for (int i = 0; i < ccaList.size(); i++) {
+			for (int i = 0; i < ccaList.size(); i++) {
 
-							output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
-									ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(),  ccaList.get(i).getDayOfWeek(),
-									ccaList.get(i).getTime(),ccaList.get(i).getTitle(),ccaList.get(i).getInstrcInCharge(),
-									ccaList.get(i).getCategory());
-						}
-						return output;
-					}
-					public static void viewAllCCA(ArrayList<CCA> ccaList) {
-						C206_CaseStudy.setHeader("CCA LIST");
-						String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "ASSET TAG",
-								"DESCRIPTION", "CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
-						 output += retrieveAllCCA(ccaList);	
-						System.out.println(output);
-					}
+				output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
+						ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(),  ccaList.get(i).getDayOfWeek(),
+						ccaList.get(i).getTime(),ccaList.get(i).getTitle(),ccaList.get(i).getInstrcInCharge(),
+						ccaList.get(i).getCategory());
+				}
+					return output;
+			}
+		public static void viewAllCCA(ArrayList<CCA> ccaList) {
+			C206_CaseStudy.setHeader("CCA LIST");
+			String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "ASSET TAG",
+					"DESCRIPTION", "CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
+			 output += retrieveAllCCA(ccaList);	
+			System.out.println(output);
+		}
 					
-					
-					//Delete CCA details
-					public static boolean removeCCAdetails(ArrayList<CCA> ccaList) {
-						viewAllCCA(ccaList);
-						boolean isDeleted = false;
-						String delTitle = Helper.readString("Enter CCA to delete >");
+		//Delete CCA details
+		public static boolean removeCCAdetails(ArrayList<CCA> ccaList) {
+			viewAllCCA(ccaList);
+			boolean isDeleted = false;
+			String delTitle = Helper.readString("Enter CCA to delete >");
 						
-						
-						
-						for(int i=0; i<ccaList.size(); i++) {
-							CCA cca = ccaList.get(i);
-							if(cca.getTitle().equalsIgnoreCase(delTitle)){
-								isDeleted = true; 
-								ccaList.remove(i);
-								System.out.println(delTitle + " is deleted!");
-								break;
-							}
-							else {
-								isDeleted = false;
-							}
+			for(int i=0; i<ccaList.size(); i++) {
+				CCA cca = ccaList.get(i);
+				if(cca.getTitle().equalsIgnoreCase(delTitle)){
+					isDeleted = true; 
+					ccaList.remove(i);
+					System.out.println(delTitle + " is deleted!");
+					break;
+				}
+				else {
+					isDeleted = false;
+				}
 							
-						}
-						return isDeleted;
+			}
+			return isDeleted;
 
-					}
-				//Charis code
+			}
+			//Charis code
 		
 
 }
