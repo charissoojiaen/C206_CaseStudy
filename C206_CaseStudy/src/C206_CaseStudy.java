@@ -40,7 +40,7 @@ public class C206_CaseStudy {
 				System.out.println("Either your username or password was incorrect. Please try again!");
 			}
 			
-	while (isAdmin) {
+		while (isAdmin) {
 		int option = 0;
 		
 		
@@ -196,7 +196,11 @@ public class C206_CaseStudy {
 		System.out.println("Invalid option!");
 		}
 		}
+	
+	}
+	}
 		}
+	}
 
 
 
