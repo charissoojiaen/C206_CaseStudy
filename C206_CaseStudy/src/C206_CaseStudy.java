@@ -9,7 +9,15 @@ public class C206_CaseStudy {
 		studentList.add(new Student("APPLE", 123, "P3", "CP53", "MARY"));
 		studentList.add(new Student("Pear", 12, "P4", "CP52", "K"));
 		studentList.add(new Student("Peach", 1, "P5", "CP51", "BYE"));
-
+		
+		ArrayList<CCA> ccaList = new ArrayList<CCA>();
+		ccaList.add(new CCA("Volleyball", "Hitting the ball with wrist.", 20, "Tuesday",
+				"3:00PM-4:30PM", "Volleyball court", "Jason", "Sports"));
+		ccaList.add(new CCA("ArtClub", "Draw, express your thoughts freely!", 16, "Thursday",
+				"3:00PM-4:00PM", "Art Room", "Jesmine", "Recreation"));
+		ccaList.add(new CCA("NPCC", "Train your leadership skills and character.", 25,
+				"Tuesday", "3:00PM-6:00PM", "Parade square", "Nazrul", "Uniform groups"));
+		
 
 		int option = 0;
 
@@ -61,8 +69,8 @@ public class C206_CaseStudy {
 
 
 
-		// Chromebook cb = inputChromebook();
-		// ResourceCentre.addChromebook(chromebookList, cb);
+			CCA detail = inputCCADetails();
+			C206_CaseStudy.addCCADetails(ccaList, detail);
 		} else if (addType == 3) {
 		// Add CCA Category
 
@@ -109,7 +117,7 @@ public class C206_CaseStudy {
 		} else if (deleteType == 2) {
 		// delete CCA Details
 
-
+			removeCCAdetails(ccaList);
 
 		} else if (deleteType == 3) {
 		// delete CCA Category
@@ -141,8 +149,8 @@ public class C206_CaseStudy {
 		} else if (viewType == 2) {
 		// view CCA
 
-
-
+			viewAllCCA(ccaList);
+			
 		} else if (viewType == 3) {
 		// view CCA Category
 
@@ -191,7 +199,7 @@ public class C206_CaseStudy {
 
 	
 
-
+		//Vincent's code
 	private static Student inputStudent() {
 
 		String name = Helper.readString("Enter name > ");
@@ -248,5 +256,79 @@ public class C206_CaseStudy {
 		}
 
 	}
+	//Vincent's code
+	
+	//Charis's code
+			//Add CCA details
+			
+					public static CCA inputCCADetails() {
+						String title = Helper.readString("Enter title > ");
+						String description = Helper.readString("Enter description > ");
+						int size = Helper.readInt("Enter class size > ");
+						String dayofWeek = Helper.readString("Enter day of week >");
+						String time = Helper.readString("Enter time >");
+						String venue = Helper.readString("Enter venue >");
+						String inCharge = Helper.readString("Enter instructor-in-charge >");
+						String category = Helper.readString("Enter category >");
+						
+						CCA detail= new CCA(title, description, size, dayofWeek, time, venue, inCharge, category);
+						return detail;
+						
+					}
+					public static void addCCADetails(ArrayList<CCA> ccaList, CCA detail) {
+						
+						ccaList.add(detail);
+						System.out.println("CCA added!");
+					}
+			
+					
+					//View all CCAs
+					public static String retrieveAllCCA(ArrayList<CCA> ccaList) {
+						String output = "";
+
+						for (int i = 0; i < ccaList.size(); i++) {
+
+							output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
+									ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(),  ccaList.get(i).getDayOfWeek(),
+									ccaList.get(i).getTime(),ccaList.get(i).getTitle(),ccaList.get(i).getInstrcInCharge(),
+									ccaList.get(i).getCategory());
+						}
+						return output;
+					}
+					public static void viewAllCCA(ArrayList<CCA> ccaList) {
+						C206_CaseStudy.setHeader("CCA LIST");
+						String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "ASSET TAG",
+								"DESCRIPTION", "CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
+						 output += retrieveAllCCA(ccaList);	
+						System.out.println(output);
+					}
+					
+					
+					//Delete CCA details
+					public static boolean removeCCAdetails(ArrayList<CCA> ccaList) {
+						viewAllCCA(ccaList);
+						boolean isDeleted = false;
+						String delTitle = Helper.readString("Enter CCA to delete >");
+						
+						
+						
+						for(int i=0; i<ccaList.size(); i++) {
+							CCA cca = ccaList.get(i);
+							if(cca.getTitle().equalsIgnoreCase(delTitle)){
+								isDeleted = true; 
+								ccaList.remove(i);
+								System.out.println(delTitle + " is deleted!");
+								break;
+							}
+							else {
+								isDeleted = false;
+							}
+							
+						}
+						return isDeleted;
+
+					}
+				//Charis code
+		
 
 }
