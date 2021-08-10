@@ -149,6 +149,8 @@ public class C206_CaseStudy {
 
 		} else if (deleteType == 4) {
 		// delete Parent Account
+			
+			deleteParentAccount(parentList);
 
 		} else {
 		System.out.println("Invalid type");
@@ -405,6 +407,29 @@ public class C206_CaseStudy {
 		    return output;
 
 		  }
+		  
+		  public static boolean deleteParentAccount(ArrayList<Parent> parentList ) {
+		      viewAllParent(parentList);
+		      boolean isDeleted = false;
+		      
+		      String delParent = Helper.readString("Enter name to delete >");
+		      
+		      for(int i=0; i < parentList.size(); i++) {
+		      //String nameDeleted = parentList.get(i).getName();
+		        if(delParent.equalsIgnoreCase(parentList.get(i).getName())){ 
+		          isDeleted = true; 
+		          parentList.remove(i);
+		          System.out.println(delParent + " is deleted!");
+		          break;
+		        }
+		        else {
+		          isDeleted = false;
+		        }
+		        
+		      }
+		      return isDeleted;
+
+		    }
 		  
 		  // fauzi's code
 		
