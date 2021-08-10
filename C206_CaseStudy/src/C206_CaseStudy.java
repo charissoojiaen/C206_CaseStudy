@@ -18,10 +18,14 @@ public class C206_CaseStudy {
 		ccaList.add(new CCA("NPCC", "Train your leadership skills and character.", 25,
 				"Tuesday", "3:00PM-6:00PM", "Parade square", "Nazrul", "Uniform groups"));
 		
-
+		ArrayList<Admin> adminList = new ArrayList<Admin>();
+		adminList.add(new Admin("Vincent", "T0987654E", "A3627"));
+		adminList.add(new Admin("Gillian", "T2345671D", "A2930"));
+		adminList.add(new Admin("Caroline", "T2435479E", "A1256"));
+		
 		int option = 0;
-
-
+		
+		
 
 		while (option != 5) {
 
@@ -179,7 +183,7 @@ public class C206_CaseStudy {
 
 		private static void menu() {
 		// TODO Auto-generated method stub
-		C206_CaseStudy.setHeader("RESOURCE CENTRE APP");
+		C206_CaseStudy.setHeader("CCA REGISTRATION APP");
 		System.out.println("1. ADD");
 		System.out.println("2. DELETE");
 		System.out.println("3. VIEW");
@@ -197,7 +201,6 @@ public class C206_CaseStudy {
 		Helper.line(80, "=");
 		}
 
-	
 
 		//Vincent's code
 	private static Student inputStudent() {
