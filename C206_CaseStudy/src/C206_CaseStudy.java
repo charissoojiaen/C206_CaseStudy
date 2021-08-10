@@ -18,6 +18,11 @@ public class C206_CaseStudy {
 		ccaList.add(new CCA("NPCC", "Train your leadership skills and character.", 25,
 				"Tuesday", "3:00PM-6:00PM", "Parade square", "Nazrul", "Uniform groups"));
 		
+		ArrayList<Category> categoryList = new ArrayList<Category>();
+		categoryList.add(new Category("Sports", "CCAs with Physical Activity"));
+		categoryList.add(new Category("Recreation", "CCAs involved with leisure hobbies"));
+		categoryList.add(new Category("Uniform Groups", "CCAs targetting Discipline and Uniformity"));
+		
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 		adminList.add(new Admin("Vincent", "T0987654E", "A3627"));
 		adminList.add(new Admin("Gillian", "T2345671D", "A2930"));
@@ -95,7 +100,8 @@ public class C206_CaseStudy {
 		} else if (addType == 3) {
 		// Add CCA Category
 
-
+			Category cat = inputCategory();
+			addCategory(categoryList, cat);
 
 		} else if (addType == 4) {
 		// Add Parent Account
@@ -145,7 +151,7 @@ public class C206_CaseStudy {
 		} else if (deleteType == 3) {
 		// delete CCA Category
 
-
+			removeCategory(categoryList);
 
 		} else if (deleteType == 4) {
 		// delete Parent Account
@@ -179,7 +185,7 @@ public class C206_CaseStudy {
 		} else if (viewType == 3) {
 		// view CCA Category
 
-
+			viewAllCategories(categoryList);
 
 		} else if (viewType == 4) {
 		// view Parent
@@ -432,6 +438,74 @@ public class C206_CaseStudy {
 		    }
 		  
 		  // fauzi's code
-		
 
+		  //caroline's code
+
+		  private static Category inputCategory() {
+
+			  String name = Helper.readString("Enter Category Name > ");
+			  String desc = Helper.readString("Enter Category Description > ");
+
+			  Category c = new Category(name, desc);
+			  return c;
+
+		  }
+
+		  public static void addCategory(ArrayList<Category> categoryList, Category c) {
+
+			  categoryList.add(c);
+			  System.out.println("CCA Category added!");
+		  }
+
+		  public static void viewAllCategories(ArrayList<Category> categoryList) {
+			  setHeader("CATEGORY LIST");
+			  String output = String.format("%-10s %-30s\n", "NAME", "DESCRIPTION");
+			  output += retrieveAllCategories(categoryList);
+			  System.out.println(output);
+		  }
+
+		  public static String retrieveAllCategories(ArrayList<Category> categoryList) {
+
+			  String output = "";
+
+			  for (int i = 0; i < categoryList.size(); i++) {
+
+				  String name = categoryList.get(i).getCategoryName();
+				  String desc = categoryList.get(i).getCategoryDesc();
+				  output += String.format("%-10s %-30s\n", name, desc);
+
+			  }
+
+			  return output;
+
+		  }
+
+		  public static boolean removeCategory(ArrayList<Category> categoryList ) {
+
+			  viewAllCategories(categoryList);
+			  boolean isDeleted = false;
+
+			  String delCategory = Helper.readString("Enter category name to delete > ");
+
+			  for (int i = 0; i < categoryList.size(); i++) {
+
+				  String name = categoryList.get(i).getCategoryName();
+
+				  if(delCategory.equalsIgnoreCase(name)) { 
+
+					  isDeleted = true; 
+					  categoryList.remove(i);
+					  System.out.println(delCategory + " is deleted!");
+					  break;
+				  }
+				  else {
+					  isDeleted = false;
+				  }
+
+			  }
+			  return isDeleted;
+
+		  }
+
+		  // caroline's code
 }
