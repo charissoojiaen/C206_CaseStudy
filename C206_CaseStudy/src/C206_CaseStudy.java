@@ -25,6 +25,22 @@ public class C206_CaseStudy {
 		
 		ArrayList<Parent> parentList = new ArrayList<Parent>();
 		
+		Admin admin = new Admin("Fauzi", "T2310256D","A2344");
+		
+		while (true) {
+
+			C206_CaseStudy.loginMenu();
+			String uName = Helper.readString("Enter username > ");
+			String uPassword = Helper.readString("Enter password > ");
+
+			boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
+			
+		if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
+			if (isAdmin == false) {
+				System.out.println("Either your username or password was incorrect. Please try again!");
+			}
+			
+	while (isAdmin) {
 		int option = 0;
 		
 		
@@ -203,7 +219,21 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "=");
 		}
-
+			
+		public static void loginMenu() {
+			Helper.line(30, "-");
+			System.out.println("CCA REGISTRATION APP - LOGIN");
+			Helper.line(30, "-");
+			
+		}
+			
+		//Gillian's code
+		public static boolean doAdminLogin(Admin admin, String uName, String uPassword) {
+			
+			return admin.getId().equalsIgnoreCase(uName) && admin.getPassword().equals(uPassword);
+			
+			//Gillian's code
+}	
 
 		//Vincent's code
 	private static Student inputStudent() {
