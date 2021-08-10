@@ -23,6 +23,8 @@ public class C206_CaseStudy {
 		adminList.add(new Admin("Gillian", "T2345671D", "A2930"));
 		adminList.add(new Admin("Caroline", "T2435479E", "A1256"));
 		
+		ArrayList<Parent> parentList = new ArrayList<Parent>();
+		
 		int option = 0;
 		
 		
@@ -84,7 +86,9 @@ public class C206_CaseStudy {
 		// Make parent class
 		// inputParent method
 		// addParent Method
-
+			
+			Parent p = inputParent();
+			C206_CaseStudy.addParent(parentList, p);
 
 
 		// Parent p = inputParent();
@@ -328,6 +332,47 @@ public class C206_CaseStudy {
 
 			}
 			//Charis code
+		
+		// fauzi's code
+		
+		public static void addParent(ArrayList<Parent> parentList, Parent p) {
+
+		    parentList.add(p);
+		    System.out.println("Parent added");
+		  }
+
+		  public static Parent inputParent() {
+		    String name = Helper.readString("Enter name > ");
+		    int phoneNumber = Helper.readInt("Enter phone number > ");
+		    int regID = Helper.readInt("Enter you registration ID > ");
+
+		    Parent p = new Parent(name, phoneNumber , regID);
+		    return p;
+
+		  }
+
+		  public static void viewAllParent(ArrayList<Parent> parentList) {
+		    C206_CaseStudy.setHeader("Parent LIST");
+		    String output = String.format("%-10s %-30s %-30s \n", "NAME", "PHONE NUMBER" , "REGISTRATION ID");
+		    output += retrieveAllParent(parentList);
+		    System.out.println(output);
+		  }
+
+		  public static String retrieveAllParent(ArrayList<Parent> parentList) {
+		    String output = "";
+
+		    for (int i = 0; i < parentList.size(); i++) {
+
+		      output += String.format("%-10s %-30d %-30d \n", parentList.get(i).getName(),
+		          parentList.get(i).getPhoneNumber(), parentList.get(i).getRegID());
+		          
+		          
+		    }
+		    return output;
+
+		  }
+		  
+		  // fauzi's code
 		
 
 }
