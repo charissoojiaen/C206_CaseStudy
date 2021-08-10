@@ -177,16 +177,16 @@ public class C206_CaseStudy {
 		System.out.println("3. VIEW");
 		System.out.println("4. VIEW STUDENTS REGISTERED IN CCA");
 		System.out.println("5. Quit");
-		Helper.line(80, "-");
+		Helper.line(80, "=");
 		}
 
 
 
 		private static void setHeader(String header) {
 		// TODO Auto-generated method stub
-		Helper.line(80, "-");
+		Helper.line(80, "=");
 		System.out.println(header);
-		Helper.line(80, "-");
+		Helper.line(80, "=");
 		}
 
 	
