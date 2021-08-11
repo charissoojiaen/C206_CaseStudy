@@ -7,6 +7,7 @@ public class ParentRegister {
 		this.studentId = studentId;
 		this.regiId = regiId;
 		}
+		
 		public String getStudentId() {
 		return studentId;
 		}

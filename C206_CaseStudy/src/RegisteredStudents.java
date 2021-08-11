@@ -9,6 +9,7 @@ public class RegisteredStudents {
 		this.name = name;
 		this.cca = cca;
 		}
+		
 		public int getRegiStudentId() {
 		return studentId;
 		}
