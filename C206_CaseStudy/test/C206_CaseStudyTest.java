@@ -92,13 +92,13 @@ public class C206_CaseStudyTest {
 		String testOutput = "";
 		assertEquals("Test that viewAllStudent is empty", testOutput, allStudent);
 		
-		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		//Given an empty list, after adding 3 students, test if the size of the list is 3 - normal
 		C206_CaseStudy.addStudents(studentList, stu1);
 		C206_CaseStudy.addStudents(studentList, stu2);
 		C206_CaseStudy.addStudents(studentList, stu3);
 		assertEquals("Test that Camcorder arraylist size is 3", 3, studentList.size());
 		
-		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
+		//test if the expected output string same as the list of studentList retrieved from the CaseStudy	
 		allStudent= C206_CaseStudy.retriveStudent(studentList);
 		testOutput = String.format("%-10d %-10d %-30s %-10s %-10s %-20s\n",1, 123,"APPLE",
 				"P3", "CP53" , "MARY");
@@ -113,9 +113,7 @@ public class C206_CaseStudyTest {
 	@Test
 	public void removeAStudent() {
 		assertNotNull("Test if there is valid Student arraylist to retrieve item", studentList);
-		
-		//test if the list of student retrieved from the case study is empty - boundary
-		
+	
 		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
 		C206_CaseStudy.addStudents(studentList, stu1);
 		C206_CaseStudy.addStudents(studentList, stu2);
