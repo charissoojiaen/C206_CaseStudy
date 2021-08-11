@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class C206_CaseStudy {
 
@@ -36,26 +37,19 @@ public class C206_CaseStudy {
 		//Gillian's code
 		ParentRegister pr = new ParentRegister("123", "2345");
 
-
 		ArrayList<RegisteredStudents> studentCCAList = new ArrayList<RegisteredStudents>();
         studentCCAList.add(new RegisteredStudents(123, "APPLE", "Volleyball"));
         studentCCAList.add(new RegisteredStudents(234, "Aiden", "NPCC"));
 
-
         C206_CaseStudy.ccaApplog();
         int choice = 0;
-
 
         choice = Helper.readInt("Enter option > ");
         if (choice == 1) {
 
-
-
         	C206_CaseStudy.loginRegiMenu();
         	String studentId = Helper.readString("Enter student ID > ");
         	String regiId = Helper.readString("Enter Registration ID > ");
-
-
 
         	boolean isParent = C206_CaseStudy.doParentLogin(pr, studentId, regiId);
 
@@ -68,18 +62,12 @@ public class C206_CaseStudy {
         			C206_CaseStudy.RegiMenu();
         			option = Helper.readInt("Enter an option > ");
 
-
-
         			if (option == 1) {
         				RegisteredStudents details = inputRegisterStudent();
         				addStudentCCA(studentCCAList, details);
 
-
-
         			} else if (option == 2) {
         				System.out.println("Thank you for using CCA registration App!");
-
-
 
         			} else {
         				System.out.println("Invalid option. Please try again");
@@ -93,48 +81,33 @@ public class C206_CaseStudy {
         } else if (choice == 2) {
         	while (true) {
 
-
-
         		C206_CaseStudy.loginMenu();
         		String uName = Helper.readString("Enter username > ");
         		String uPassword = Helper.readString("Enter password > ");
 
-
-
         		boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
-
-
 
         		if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
         			if (isAdmin == false) {
         				System.out.println("Either your username or password was incorrect. Please try again!");
         			}
 
-
-
         			while (isAdmin) {
         				int option = 0;
 
-
-
         				while (option != 5) {
-
-
 
         					C206_CaseStudy.menu();
         					option = Helper.readInt("Enter an option > ");
-
-
-
-        					// Gillian's code
+        					
         				}
 
-    // Gillian's code
-    }
+        				// Gillian's code
         			}
+        		}
         	}
 
-        	} else if (choice == 2) {
+        } else if (choice == 2) {
 		
     	while (true) {
 
@@ -150,22 +123,15 @@ public class C206_CaseStudy {
 			}
 			
 		while (isAdmin) {
-		int option = 0;
-		
-		
+			
+		int option = 0;	
 
 		while (option != 5) {
-
-
 
 		C206_CaseStudy.menu();
 		option = Helper.readInt("Enter an option > ");
 
-
-
 		if (option == 0) {
-
-
 
 		} else if (option == 1) {
 		// Add a new item
@@ -176,11 +142,7 @@ public class C206_CaseStudy {
 		System.out.println("4. Add Parent Account ");
 		System.out.println("5. Add Student For CCA");
 
-
-
 		int addType = Helper.readInt("Enter option to add ______ > ");
-
-
 
 		if (addType == 1) {
 		// Add Student
@@ -192,7 +154,6 @@ public class C206_CaseStudy {
 
 		// Student ___ = __________();
 		// C206_CaseStudy.addStudent(studentList , ___ )
-
 
 
 		} else if (addType == 2) {
@@ -213,7 +174,7 @@ public class C206_CaseStudy {
 		// inputParent method
 		// addParent Method
 			
-			Parent p = inputParent();
+			Parent p = inputParent(studentList);
 			C206_CaseStudy.addParent(parentList, p);
 
 
@@ -294,7 +255,7 @@ public class C206_CaseStudy {
 		} else if (viewType == 4) {
 		// view Parent
 			
-			
+			viewAllParent(parentList);
 
 		} else {
 		System.out.println("Invalid type");
@@ -374,8 +335,6 @@ public class C206_CaseStudy {
 		public static boolean doAdminLogin(Admin admin, String uName, String uPassword) {
 			
 			return admin.getId().equalsIgnoreCase(uName) && admin.getPassword().equals(uPassword);
-			
-			
 		
 }	
 		public static boolean doParentLogin(ParentRegister pr, String studentId, String regiId) {
@@ -517,19 +476,38 @@ public class C206_CaseStudy {
 		
 		public static void addParent(ArrayList<Parent> parentList, Parent p) {
 
-		    parentList.add(p);
-		    System.out.println("Parent added");
-		  }
+			parentList.add(p);
 
-		  public static Parent inputParent() {
-		    String name = Helper.readString("Enter name > ");
-		    int phoneNumber = Helper.readInt("Enter phone number > ");
-		    int regID = Helper.readInt("Enter you registration ID > ");
+		}
 
-		    Parent p = new Parent(name, phoneNumber , regID);
-		    return p;
+		public static Parent inputParent(ArrayList<Student> studentList) {
 
-		  }
+			int id = Helper.readInt("Enter student ID > ");
+
+			Parent p = null;
+			for (int i = 0; i < studentList.size(); i++) {
+
+				if (id == studentList.get(i).getId()) {
+
+					String name = Helper.readString("Enter name > ");
+					int phoneNumber = Helper.readInt("Enter phone number > ");
+					Random ran = new Random();
+					int regID = ran.nextInt(1000);
+					p = new Parent(name, phoneNumber, regID);
+					System.out.println("Your registration id is "+ regID);
+					System.out.println("Parent added");
+					break;
+
+				}
+
+				else if (id != studentList.get(i).getId()) {
+					System.out.println("Invalid student ID");
+					break;
+				}
+			}
+
+			return p;
+		}
 
 		  public static void viewAllParent(ArrayList<Parent> parentList) {
 		    C206_CaseStudy.setHeader("Parent LIST");
