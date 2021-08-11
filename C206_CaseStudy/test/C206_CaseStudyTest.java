@@ -63,6 +63,75 @@ public class C206_CaseStudyTest {
 		adminList = new ArrayList<Admin>();
 		parentList = new ArrayList<Parent>();
 	}
+	@Test
+	public void addStudents() {
+		assertNotNull("Check if there is valid Student arraylist to add to", studentList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addStudents(studentList, stu1);
+		assertEquals("Check that studentList arraylist size is 1", 1, studentList.size());
+		assertSame("Check that studentList is added", stu1, studentList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addStudents(studentList, stu2);
+		assertEquals("Check that studentList arraylist size is 2", 2, studentList.size());
+		assertSame("Check that studentList is added", stu2, studentList.get(1));
+		
+		C206_CaseStudy.addStudents(studentList, stu3);
+		assertEquals("Check that studentList arraylist size is 3", 3, studentList.size());
+		assertSame("Check that studentList is added", stu3, studentList.get(2));
+	}
+	@Test
+	public void retrieveStudents() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Student arraylist to retrieve item", studentList);
+		
+		//test if the list of student retrieved from the case study is empty - boundary
+		String allStudent= C206_CaseStudy.retriveStudent(studentList);
+		String testOutput = "";
+		assertEquals("Test that viewAllStudent is empty", testOutput, allStudent);
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addStudents(studentList, stu1);
+		C206_CaseStudy.addStudents(studentList, stu2);
+		C206_CaseStudy.addStudents(studentList, stu3);
+		assertEquals("Test that Camcorder arraylist size is 3", 3, studentList.size());
+		
+		//test if the expected output string same as the list of camcorders retrieved from the SourceCentre	
+		allStudent= C206_CaseStudy.retriveStudent(studentList);
+		testOutput = String.format("%-10d %-10d %-30s %-10s %-10s %-20s\n",1, 123,"APPLE",
+				"P3", "CP53" , "MARY");
+		testOutput += String.format("%-10d %-10d %-30s %-10s %-10s %-20s\n",2, 12,"Pear",
+				"P4", "CP52" , "K");
+		testOutput += String.format("%-10d %-10d %-30s %-10s %-10s %-20s\n",3, 1,"Peach",
+				"P5", "CP51" , "BYE");
+	
+		assertEquals("Test that ViewAllStudentlist", testOutput, allStudent);
+
+	}
+	@Test
+	public void removeAStudent() {
+		assertNotNull("Test if there is valid Student arraylist to retrieve item", studentList);
+		
+		//test if the list of student retrieved from the case study is empty - boundary
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addStudents(studentList, stu1);
+		C206_CaseStudy.addStudents(studentList, stu2);
+		C206_CaseStudy.addStudents(studentList, stu3);
+		assertEquals("Test that Camcorder arraylist size is 3", 3, studentList.size());
+		
+		
+		studentList.remove(stu1);
+		assertEquals("Check that studentList arraylist size is 2", 2, studentList.size());
+		
+		studentList.remove(stu2);
+		assertEquals("Check that studentList arraylist size is 1", 1, studentList.size());
+		
+		studentList.remove(stu3);
+		assertEquals("Check that studentList arraylist size is 0", 0, studentList.size());
+	}
 
 	@After
 	public void tearDown() throws Exception {
@@ -82,12 +151,19 @@ public class C206_CaseStudyTest {
 		p1 = null;
 		p2 = null;
 		p3 = null;
+		
+		studentList = null;
+		ccaList = null;
+		categoryList = null;
+		adminList = null;
+		parentList = null;
 	}
 
 	@Test
 	public void c206_test() {
 		// fail("Not yet implemented");
 		assertTrue("C206_CaseStudy_SampleTest ", true);
+	
 	}
 
 }
