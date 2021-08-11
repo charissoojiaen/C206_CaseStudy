@@ -131,6 +131,80 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that studentList arraylist size is 0", 0, studentList.size());
 	}
 
+	
+	@Test
+	public void addCCADetails() {
+		assertNotNull("Check if there is valid CCA arraylist to add to", ccaList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addCCADetails(ccaList, cca1);
+		assertEquals("Check that ccaList arraylist size is 1", 1, ccaList.size());
+		assertSame("Check that ccaList is added", cca1, ccaList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addCCADetails(ccaList, cca2);
+		assertEquals("Check that ccaList arraylist size is 2", 2, ccaList.size());
+		assertSame("Check that ccaList is added", cca2, ccaList.get(1));
+		
+		C206_CaseStudy.addCCADetails(ccaList, cca3);
+		assertEquals("Check that ccaList arraylist size is 3", 3, ccaList.size());
+		assertSame("Check that ccaList is added", cca3, ccaList.get(2));
+	}
+	@Test
+	public void retrieveAllCCA() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid CCA arraylist to retrieve item", ccaList);
+		
+		//test if the list of student retrieved from the case study is empty - boundary
+		String allCCA= C206_CaseStudy.retrieveAllCCA(ccaList);
+		String testOutput = "";
+		assertEquals("Test that viewAllCCA is empty", testOutput, allCCA);
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addCCADetails(ccaList, cca1);
+		C206_CaseStudy.addCCADetails(ccaList, cca2);
+		C206_CaseStudy.addCCADetails(ccaList, cca3);
+		assertEquals("Test that CCA arraylist size is 3", 3, ccaList.size());
+		
+		//test if the expected output string same as the list of CCAs retrieved from the CaseStudy	
+		allCCA= C206_CaseStudy.retrieveAllCCA(ccaList);
+		testOutput = String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", "Volleyball","Hitting the ball with wrist.",
+				20, "Tuesday", "3:00PM-4:30PM" , "Volleyball court", "Jason", "Sports");
+		testOutput += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", "ArtClub","Draw, express your thoughts freely!",
+				16, "Thursday", "3:00PM-4:00PM" , "Art Room", "Jesmine", "Recreation");
+		testOutput += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", "NPCC","Train your leadership skills and character.",
+				25, "Tuesday", "3:00PM-6:00PM" , "Parade square", "Nazrul", "Uniform groups");
+	
+		assertEquals("Test that ViewAllCCAlist", testOutput, allCCA);
+
+	}
+	@Test
+	public void removeCCAdetails() {
+		assertNotNull("Test if there is valid CCA arraylist to retrieve item", studentList);
+		
+		//test if the list of student retrieved from the case study is empty - boundary
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addCCADetails(ccaList, cca1);
+		C206_CaseStudy.addCCADetails(ccaList, cca2);
+		C206_CaseStudy.addCCADetails(ccaList, cca3);
+		assertEquals("Test that CCA arraylist size is 3", 3, ccaList.size());
+		
+		
+		ccaList.remove(cca1);
+		assertEquals("Check that ccaList arraylist size is 2", 2, ccaList.size());
+		
+		ccaList.remove(cca2);
+		assertEquals("Check that ccaList arraylist size is 1", 1, ccaList.size());
+		
+		ccaList.remove(cca3);
+		assertEquals("Check that ccaList arraylist size is 0", 0, ccaList.size());
+	}
+	
+	
+	
+	
 	@After
 	public void tearDown() throws Exception {
 		cca1 = null;				
