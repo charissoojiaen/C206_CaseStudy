@@ -435,14 +435,14 @@ public class C206_CaseStudy {
 
 				output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
 						ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(),  ccaList.get(i).getDayOfWeek(),
-						ccaList.get(i).getTime(),ccaList.get(i).getTitle(),ccaList.get(i).getInstrcInCharge(),
+						ccaList.get(i).getTime(),ccaList.get(i).getVenue(),ccaList.get(i).getInstrcInCharge(),
 						ccaList.get(i).getCategory());
 				}
 					return output;
 			}
 		public static void viewAllCCA(ArrayList<CCA> ccaList) {
 			C206_CaseStudy.setHeader("CCA LIST");
-			String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "ASSET TAG",
+			String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "TITLE",
 					"DESCRIPTION", "CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
 			 output += retrieveAllCCA(ccaList);	
 			System.out.println(output);
