@@ -32,7 +32,111 @@ public class C206_CaseStudy {
 		
 		Admin admin = new Admin("Fauzi", "T2310256D","A2344");
 		
-		while (true) {
+
+		//Gillian's code
+		ParentRegister pr = new ParentRegister("123", "2345");
+
+
+		ArrayList<RegisteredStudents> studentCCAList = new ArrayList<RegisteredStudents>();
+        studentCCAList.add(new RegisteredStudents(123, "APPLE", "Volleyball"));
+        studentCCAList.add(new RegisteredStudents(234, "Aiden", "NPCC"));
+
+
+        C206_CaseStudy.ccaApplog();
+        int choice = 0;
+
+
+        choice = Helper.readInt("Enter option > ");
+        if (choice == 1) {
+
+
+
+        	C206_CaseStudy.loginRegiMenu();
+        	String studentId = Helper.readString("Enter student ID > ");
+        	String regiId = Helper.readString("Enter Registration ID > ");
+
+
+
+        	boolean isParent = C206_CaseStudy.doParentLogin(pr, studentId, regiId);
+
+        	if(!isParent) {
+        		System.out.println("Either your username or password was incorrect!");
+
+        	} else {
+        		int option = 0;
+        		while (option != 2) {
+        			C206_CaseStudy.RegiMenu();
+        			option = Helper.readInt("Enter an option > ");
+
+
+
+        			if (option == 1) {
+        				RegisteredStudents details = inputRegisterStudent();
+        				addStudentCCA(studentCCAList, details);
+
+
+
+        			} else if (option == 2) {
+        				System.out.println("Thank you for using CCA registration App!");
+
+
+
+        			} else {
+        				System.out.println("Invalid option. Please try again");
+
+        				// Gillian's code
+        			}
+        		}
+
+        	}
+
+        } else if (choice == 2) {
+        	while (true) {
+
+
+
+        		C206_CaseStudy.loginMenu();
+        		String uName = Helper.readString("Enter username > ");
+        		String uPassword = Helper.readString("Enter password > ");
+
+
+
+        		boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
+
+
+
+        		if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
+        			if (isAdmin == false) {
+        				System.out.println("Either your username or password was incorrect. Please try again!");
+        			}
+
+
+
+        			while (isAdmin) {
+        				int option = 0;
+
+
+
+        				while (option != 5) {
+
+
+
+        					C206_CaseStudy.menu();
+        					option = Helper.readInt("Enter an option > ");
+
+
+
+        					// Gillian's code
+        				}
+
+    // Gillian's code
+    }
+        			}
+        	}
+
+        	} else if (choice == 2) {
+		
+    	while (true) {
 
 			C206_CaseStudy.loginMenu();
 			String uName = Helper.readString("Enter username > ");
@@ -189,6 +293,8 @@ public class C206_CaseStudy {
 
 		} else if (viewType == 4) {
 		// view Parent
+			
+			
 
 		} else {
 		System.out.println("Invalid type");
@@ -208,6 +314,7 @@ public class C206_CaseStudy {
 	}
 	}
 		}
+	}
 	}
 
 
@@ -231,21 +338,52 @@ public class C206_CaseStudy {
 		System.out.println(header);
 		Helper.line(80, "=");
 		}
-			
+		
+		// Gillian's code
 		public static void loginMenu() {
-			Helper.line(30, "-");
-			System.out.println("CCA REGISTRATION APP - LOGIN");
-			Helper.line(30, "-");
-			
+		Helper.line(80, "-");
+		System.out.println("CCA REGISTRATION APP - LOGIN (ADMINISTRATOR)");
+		Helper.line(80, "-");
+
+		 }
+
+		 public static void loginRegiMenu() {
+		Helper.line(80, "-");
+		System.out.println("CCA REGISTRATION APP - LOGIN (REGISTRATION)");
+		Helper.line(80, "-");
 		}
+
+		 public static void ccaApplog() {
+		Helper.line(32, "=");
+		System.out.println("WELCOME TO CCA REGISTRATION APP");
+		Helper.line(32, "=");
+		System.out.println("1. Registration site ");
+		System.out.println("2. Administrator login ");
+		Helper.line(32, "=");
+
+		 }
+
+		 public static void RegiMenu() {
+		C206_CaseStudy.setHeader("CCA REGISTRATION APP");
+		System.out.println("1. REGISTER");
+		System.out.println("2. QUIT");
+		}
+			
 			
 		//Gillian's code
 		public static boolean doAdminLogin(Admin admin, String uName, String uPassword) {
 			
 			return admin.getId().equalsIgnoreCase(uName) && admin.getPassword().equals(uPassword);
 			
-			//Gillian's code
+			
+		
 }	
+		public static boolean doParentLogin(ParentRegister pr, String studentId, String regiId) {
+
+			 return pr.getStudentId().equals(studentId) && pr.getRegiId().equals(regiId);
+
+			 }
+		//Gillian's code
 
 		//Vincent's code
 	private static Student inputStudent() {
@@ -508,4 +646,46 @@ public class C206_CaseStudy {
 		  }
 
 		  // caroline's code
-}
+		  
+		  // Gillian's code
+
+		  public static void addStudentCCA(ArrayList<RegisteredStudents> studentCCAList, RegisteredStudents detail) {
+
+			  studentCCAList.add(detail);
+			  System.out.println("Registered Students added!");
+			  
+		  }
+
+		  public static String retrieveAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
+			  String output = "";
+
+			  for (RegisteredStudents rs : studentCCAList) {
+
+				  output += String.format("%-5d %-10s %-10s\n", rs.getRegiStudentId(), rs.getRegiName(), rs.getRegiCCA());
+
+			  }
+
+			  return output;
+		  }
+
+		  public static void viewAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
+			  C206_CaseStudy.setHeader("Registered studets LIST");
+			  String output = String.format("%-5s %-10s %-10s \n", "ID", "NAME", "CCA");
+			  output += retrieveAllStudentCCA(studentCCAList);
+			  System.out.println(output);
+
+		  }
+
+		  public static RegisteredStudents inputRegisterStudent() {
+			  int id = Helper.readInt("Enter ID > ");
+			  String name = Helper.readString("Enter Student's Name > ");
+			  String cca = Helper.readString("Enter Student's chosen CCA > ");
+
+			  RegisteredStudents detail = new RegisteredStudents(id, name, cca);
+			  return detail;
+
+
+			  // Gillian's code
+		  }
+        }
+		  
