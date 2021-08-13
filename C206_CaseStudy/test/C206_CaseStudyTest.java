@@ -130,6 +130,36 @@ public class C206_CaseStudyTest {
 		studentList.remove(stu3);
 		assertEquals("Check that studentList arraylist size is 0", 0, studentList.size());
 	}
+	@Test
+	
+	public void updateStudents() {
+		
+			C206_CaseStudy.addStudents(studentList, stu1);
+			C206_CaseStudy.addStudents(studentList, stu2);
+			C206_CaseStudy.addStudents(studentList, stu3);
+			assertEquals("Test that Camcorder arraylist size is 3", 3, studentList.size());
+			
+			stu1.setClasses("FB12");
+			stu1.setGrade("P6");
+			stu1.setTeacher("K");
+			assertNotEquals("Check if after setting new values, the content is not same", stu1);
+			assertTrue(true);
+			
+			stu2.setClasses("PB12");
+			stu2.setGrade("P5");
+			stu2.setTeacher("Ka");
+			assertNotEquals("Check if after setting new values, the content is not same", stu2);
+			assertTrue(true);
+			
+			stu3.setClasses("FC12");
+			stu3.setGrade("P1");
+			stu3.setTeacher("LO");
+			assertNotEquals("Check if after setting new values, the content is not same", stu3);
+			assertTrue(true);
+			
+			assertEquals("Check if size is still the same to ensure that nothing is added",3, studentList.size());
+		}
+
 
 	
 	@Test

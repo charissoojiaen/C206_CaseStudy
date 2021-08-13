@@ -35,4 +35,17 @@ public class Student {
 		return teacher;
 	}
 
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+
+	public void setClasses(String classes) {
+		this.classes = classes;
+	}
+
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
+	}
+	
+
 }

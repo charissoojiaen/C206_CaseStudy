@@ -10,311 +10,282 @@ public class C206_CaseStudy {
 		studentList.add(new Student("APPLE", 123, "P3", "CP53", "MARY"));
 		studentList.add(new Student("Pear", 12, "P4", "CP52", "K"));
 		studentList.add(new Student("Peach", 1, "P5", "CP51", "BYE"));
-		
+
 		ArrayList<CCA> ccaList = new ArrayList<CCA>();
-		ccaList.add(new CCA("Volleyball", "Hitting the ball with wrist.", 20, "Tuesday",
-				"3:00PM-4:30PM", "Volleyball court", "Jason", "Sports"));
-		ccaList.add(new CCA("ArtClub", "Draw, express your thoughts freely!", 16, "Thursday",
-				"3:00PM-4:00PM", "Art Room", "Jesmine", "Recreation"));
-		ccaList.add(new CCA("NPCC", "Train your leadership skills and character.", 25,
-				"Tuesday", "3:00PM-6:00PM", "Parade square", "Nazrul", "Uniform groups"));
-		
+		ccaList.add(new CCA("Volleyball", "Hitting the ball with wrist.", 20, "Tuesday", "3:00PM-4:30PM",
+				"Volleyball court", "Jason", "Sports"));
+		ccaList.add(new CCA("ArtClub", "Draw, express your thoughts freely!", 16, "Thursday", "3:00PM-4:00PM",
+				"Art Room", "Jesmine", "Recreation"));
+		ccaList.add(new CCA("NPCC", "Train your leadership skills and character.", 25, "Tuesday", "3:00PM-6:00PM",
+				"Parade square", "Nazrul", "Uniform groups"));
+
 		ArrayList<Category> categoryList = new ArrayList<Category>();
 		categoryList.add(new Category("Sports", "CCAs with Physical Activity"));
 		categoryList.add(new Category("Recreation", "CCAs involved with leisure hobbies"));
 		categoryList.add(new Category("Uniform Groups", "CCAs targetting Discipline and Uniformity"));
-		
+
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 		adminList.add(new Admin("Vincent", "T0987654E", "A3627"));
 		adminList.add(new Admin("Gillian", "T2345671D", "A2930"));
 		adminList.add(new Admin("Caroline", "T2435479E", "A1256"));
-		
-		ArrayList<Parent> parentList = new ArrayList<Parent>();
-		
-		Admin admin = new Admin("Fauzi", "T2310256D","A2344");
-		
 
-		//Gillian's code
+		ArrayList<Parent> parentList = new ArrayList<Parent>();
+
+		Admin admin = new Admin("Fauzi", "T2310256D", "A2344");
+
+		// Gillian's code
 		ParentRegister pr = new ParentRegister("123", "2345");
 
 		ArrayList<RegisteredStudents> studentCCAList = new ArrayList<RegisteredStudents>();
-        studentCCAList.add(new RegisteredStudents(123, "APPLE", "Volleyball"));
-        studentCCAList.add(new RegisteredStudents(234, "Aiden", "NPCC"));
+		studentCCAList.add(new RegisteredStudents(123, "APPLE", "Volleyball"));
+		studentCCAList.add(new RegisteredStudents(234, "Aiden", "NPCC"));
 
-        C206_CaseStudy.ccaApplog();
-        int choice = 0;
+		C206_CaseStudy.ccaApplog();
+		int choice = 0;
 
-        choice = Helper.readInt("Enter option > ");
-        if (choice == 1) {
+		choice = Helper.readInt("Enter option > ");
+		if (choice == 1) {
 
-        	C206_CaseStudy.loginRegiMenu();
-        	String studentId = Helper.readString("Enter student ID > ");
-        	String regiId = Helper.readString("Enter Registration ID > ");
+			C206_CaseStudy.loginRegiMenu();
+			String studentId = Helper.readString("Enter student ID > ");
+			String regiId = Helper.readString("Enter Registration ID > ");
 
-        	boolean isParent = C206_CaseStudy.doParentLogin(pr, studentId, regiId);
+			boolean isParent = C206_CaseStudy.doParentLogin(pr, studentId, regiId);
 
-        	if(!isParent) {
-        		System.out.println("Either your username or password was incorrect!");
+			if (!isParent) {
+				System.out.println("Either your username or password was incorrect!");
 
-        	} else {
-        		int option = 0;
-        		while (option != 2) {
-        			C206_CaseStudy.RegiMenu();
-        			option = Helper.readInt("Enter an option > ");
+			} else {
+				int option = 0;
+				while (option != 2) {
+					C206_CaseStudy.RegiMenu();
+					option = Helper.readInt("Enter an option > ");
 
-        			if (option == 1) {
-        				RegisteredStudents details = inputRegisterStudent();
-        				addStudentCCA(studentCCAList, details);
+					if (option == 1) {
+						RegisteredStudents details = inputRegisterStudent();
+						addStudentCCA(studentCCAList, details);
 
-        			} else if (option == 2) {
-        				System.out.println("Thank you for using CCA registration App!");
+					} else if (option == 2) {
+						System.out.println("Thank you for using CCA registration App!");
 
-        			} else {
-        				System.out.println("Invalid option. Please try again");
+					} else {
+						System.out.println("Invalid option. Please try again");
 
-        				// Gillian's code
-        			}
-        		}
+						// Gillian's code
+					}
+				}
 
-        	}
-
-        } else if (choice == 2) {
-        	while (true) {
-
-        		C206_CaseStudy.loginMenu();
-        		String uName = Helper.readString("Enter username > ");
-        		String uPassword = Helper.readString("Enter password > ");
-
-        		boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
-
-        		if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
-        			if (isAdmin == false) {
-        				System.out.println("Either your username or password was incorrect. Please try again!");
-        			}
-
-        			while (isAdmin) {
-        				int option = 0;
-
-        				while (option != 5) {
-
-        					C206_CaseStudy.menu();
-        					option = Helper.readInt("Enter an option > ");
-        					
-        				}
-
-        				// Gillian's code
-        			}
-        		}
-        	}
-
-        } else if (choice == 2) {
-		
-    	while (true) {
-
-			C206_CaseStudy.loginMenu();
-			String uName = Helper.readString("Enter username > ");
-			String uPassword = Helper.readString("Enter password > ");
-
-			boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
-			
-		if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
-			if (isAdmin == false) {
-				System.out.println("Either your username or password was incorrect. Please try again!");
 			}
+
+		} else if (choice == 2) {
+
+			while (true) {
+
+				C206_CaseStudy.loginMenu();
+				String uName = Helper.readString("Enter username > ");
+				String uPassword = Helper.readString("Enter password > ");
+
+				boolean isAdmin = C206_CaseStudy.doAdminLogin(admin, uName, uPassword);
+
+				if (uName.equals(admin.getId()) && uPassword.equals(admin.getPassword())) {
+					if (isAdmin == false) {
+						System.out.println("Either your username or password was incorrect. Please try again!");
+					}
+				}
 			
-		while (isAdmin) {
-			
-		int option = 0;	
 
-		while (option != 5) {
+					while (isAdmin) {
 
-		C206_CaseStudy.menu();
-		option = Helper.readInt("Enter an option > ");
+						int option = 0;
 
-		if (option == 0) {
+						while (option != 6) {
 
-		} else if (option == 1) {
-		// Add a new item
-		C206_CaseStudy.setHeader("ADD ");
-		System.out.println("1. Add Student");
-		System.out.println("2. Add CCA Details");
-		System.out.println("3. Add CCA Category ");
-		System.out.println("4. Add Parent Account ");
-		System.out.println("5. Add Student For CCA");
+							C206_CaseStudy.menu();
+							option = Helper.readInt("Enter an option > ");
 
-		int addType = Helper.readInt("Enter option to add ______ > ");
+							if (option == 0) {
 
-		if (addType == 1) {
-		// Add Student
-		// Camcorder cc = inputCamcorder();
-		// ResourceCentre.addCamcorder(camcorderList, cc);
-			Student st = inputStudent();
-			addStudents(studentList, st);
+							} else if (option == 1) {
+								// Add a new item
+								C206_CaseStudy.setHeader("ADD ");
+								System.out.println("1. Add Student");
+								System.out.println("2. Add CCA Details");
+								System.out.println("3. Add CCA Category ");
+								System.out.println("4. Add Parent Account ");
+								System.out.println("5. Add Student For CCA");
 
+								int addType = Helper.readInt("Enter option to add ______ > ");
 
-		// Student ___ = __________();
-		// C206_CaseStudy.addStudent(studentList , ___ )
+								if (addType == 1) {
+									// Add Student
+									// Camcorder cc = inputCamcorder();
+									// ResourceCentre.addCamcorder(camcorderList, cc);
+									Student st = inputStudent();
+									addStudents(studentList, st);
 
+									// Student ___ = __________();
+									// C206_CaseStudy.addStudent(studentList , ___ )
 
-		} else if (addType == 2) {
-		// Add CCA Details
+								} else if (addType == 2) {
+									// Add CCA Details
 
-			CCA detail = inputCCADetails();
-			C206_CaseStudy.addCCADetails(ccaList, detail);
-			
-		} else if (addType == 3) {
-		// Add CCA Category
+									CCA detail = inputCCADetails();
+									C206_CaseStudy.addCCADetails(ccaList, detail);
 
-			Category cat = inputCategory();
-			addCategory(categoryList, cat);
+								} else if (addType == 3) {
+									// Add CCA Category
 
-		} else if (addType == 4) {
-		// Add Parent Account
-		// Make parent class
-		// inputParent method
-		// addParent Method
-			
-			Parent p = inputParent(studentList);
-			C206_CaseStudy.addParent(parentList, p);
+									Category cat = inputCategory();
+									addCategory(categoryList, cat);
 
+								} else if (addType == 4) {
+									// Add Parent Account
+									// Make parent class
+									// inputParent method
+									// addParent Method
 
-		// Parent p = inputParent();
-		// C206_CaseStudy.addParent(parentList, p);
+									Parent p = inputParent(studentList);
+									C206_CaseStudy.addParent(parentList, p);
 
+									// Parent p = inputParent();
+									// C206_CaseStudy.addParent(parentList, p);
 
+								} else if (addType == 5) {
+									// Add Student in CCA
 
-		} else if (addType == 5) {
-		// Add Student in CCA
+								} else {
+									System.out.println("Invalid type");
+								}
 
+							} else if (option == 2) {
+								// DELETE
+								C206_CaseStudy.setHeader("DELETE ");
+								System.out.println("1. Delete Student");
+								System.out.println("2. Delete CCA");
+								System.out.println("3. Delete CCA Category ");
+								System.out.println("4. Delete Parent");
 
+								int deleteType = Helper.readInt("Enter option to delete ______ > ");
 
-		} else {
-		System.out.println("Invalid type");
+								if (deleteType == 1) {
+									// delete Student
+									removeAStudent(studentList);
+
+								} else if (deleteType == 2) {
+									// delete CCA Details
+
+									removeCCAdetails(ccaList);
+
+								} else if (deleteType == 3) {
+									// delete CCA Category
+
+									removeCategory(categoryList);
+
+								} else if (deleteType == 4) {
+									// delete Parent Account
+
+									deleteParentAccount(parentList);
+
+								} else {
+									System.out.println("Invalid type");
+								}
+
+							} else if (option == 3) {
+								// VIEW
+								C206_CaseStudy.setHeader("VIEW ");
+								System.out.println("1. View Student");
+								System.out.println("2. View CCA");
+								System.out.println("3. View CCA Category ");
+								System.out.println("4. View Parent");
+
+								int viewType = Helper.readInt("Enter option to view ______ > ");
+
+								if (viewType == 1) {
+									// view Student
+
+									viewAllStudent(studentList);
+
+								} else if (viewType == 2) {
+									// view CCA
+
+									viewAllCCA(ccaList);
+
+								} else if (viewType == 3) {
+									// view CCA Category
+
+									viewAllCategories(categoryList);
+
+								} else if (viewType == 4) {
+									// view Parent
+
+									viewAllParent(parentList);
+
+								} else {
+									System.out.println("Invalid type");
+								}
+
+							} else if (option == 5) {
+								// VIEW STUDENTS IN A CCA
+								C206_CaseStudy.setHeader("UPDATE ");
+								System.out.println("1. Update Student");
+
+								int updateType = Helper.readInt("Enter option to update ______ > ");
+
+								if (updateType == 1) {
+									// update Student
+									updateStudents(studentList);
+
+								} else {
+									System.out.println("Invalid type");
+								}
+							} else if (option == 6) {
+								System.out.println("Goodbye!");
+							} else {
+								System.out.println("Invalid option!");
+							}
+						}
+
+					}
+				
+			}
 		}
 
-
-
-		} else if(option == 2) {
-		// DELETE
-		C206_CaseStudy.setHeader("DELETE ");
-		System.out.println("1. Delete Student");
-		System.out.println("2. Delete CCA");
-		System.out.println("3. Delete CCA Category ");
-		System.out.println("4. Delete Parent");
-
-		int deleteType = Helper.readInt("Enter option to delete ______ > ");
-
-		if (deleteType == 1) {
-		// delete Student
-			removeAStudent(studentList);
-			
-		} else if (deleteType == 2) {
-		// delete CCA Details
-
-			removeCCAdetails(ccaList);
-
-		} else if (deleteType == 3) {
-		// delete CCA Category
-
-			removeCategory(categoryList);
-
-		} else if (deleteType == 4) {
-		// delete Parent Account
-			
-			deleteParentAccount(parentList);
-
-		} else {
-		System.out.println("Invalid type");
-		}
-
-		}else if(option == 3) {
-		//VIEW
-		C206_CaseStudy.setHeader("VIEW ");
-		System.out.println("1. View Student");
-		System.out.println("2. View CCA");
-		System.out.println("3. View CCA Category ");
-		System.out.println("4. View Parent");
-
-		int viewType = Helper.readInt("Enter option to view ______ > ");
-
-		if (viewType == 1) {
-		// view Student
-			
-			viewAllStudent(studentList);
-	
-		} else if (viewType == 2) {
-		// view CCA
-
-			viewAllCCA(ccaList);
-			
-		} else if (viewType == 3) {
-		// view CCA Category
-
-			viewAllCategories(categoryList);
-
-		} else if (viewType == 4) {
-		// view Parent
-			
-			viewAllParent(parentList);
-
-		} else {
-		System.out.println("Invalid type");
-		}
-
-
-		}else if (option == 4) {
-		// VIEW STUDENTS IN A CCA
-
-		}else if(option == 5) {
-		System.out.println("Goodbye!");
-		} else {
-		System.out.println("Invalid option!");
-		}
-		}
-	
 	}
-	}
-		}
-	}
-	}
 
-
-
-		private static void menu() {
+	private static void menu() {
 		// TODO Auto-generated method stub
 		C206_CaseStudy.setHeader("CCA REGISTRATION APP");
 		System.out.println("1. ADD");
 		System.out.println("2. DELETE");
 		System.out.println("3. VIEW");
 		System.out.println("4. VIEW STUDENTS REGISTERED IN CCA");
-		System.out.println("5. Quit");
+		System.out.println("5. UPDATE");
+		System.out.println("6. Quit");
 		Helper.line(80, "=");
-		}
+	}
 
-
-
-		private static void setHeader(String header) {
+	private static void setHeader(String header) {
 		// TODO Auto-generated method stub
 		Helper.line(80, "=");
 		System.out.println(header);
 		Helper.line(80, "=");
-		}
-		
-		// Gillian's code
-		public static void loginMenu() {
+	}
+
+	// Gillian's code
+	public static void loginMenu() {
 		Helper.line(80, "-");
 		System.out.println("CCA REGISTRATION APP - LOGIN (ADMINISTRATOR)");
 		Helper.line(80, "-");
 
-		 }
+	}
 
-		 public static void loginRegiMenu() {
+	public static void loginRegiMenu() {
 		Helper.line(80, "-");
 		System.out.println("CCA REGISTRATION APP - LOGIN (REGISTRATION)");
 		Helper.line(80, "-");
-		}
+	}
 
-		 public static void ccaApplog() {
+	public static void ccaApplog() {
 		Helper.line(32, "=");
 		System.out.println("WELCOME TO CCA REGISTRATION APP");
 		Helper.line(32, "=");
@@ -322,29 +293,29 @@ public class C206_CaseStudy {
 		System.out.println("2. Administrator login ");
 		Helper.line(32, "=");
 
-		 }
+	}
 
-		 public static void RegiMenu() {
+	public static void RegiMenu() {
 		C206_CaseStudy.setHeader("CCA REGISTRATION APP");
 		System.out.println("1. REGISTER");
 		System.out.println("2. QUIT");
-		}
-			
-			
-		//Gillian's code
-		public static boolean doAdminLogin(Admin admin, String uName, String uPassword) {
-			
-			return admin.getId().equalsIgnoreCase(uName) && admin.getPassword().equals(uPassword);
-		
-}	
-		public static boolean doParentLogin(ParentRegister pr, String studentId, String regiId) {
+	}
 
-			 return pr.getStudentId().equals(studentId) && pr.getRegiId().equals(regiId);
+	// Gillian's code
+	public static boolean doAdminLogin(Admin admin, String uName, String uPassword) {
 
-			 }
-		//Gillian's code
+		return admin.getId().equalsIgnoreCase(uName) && admin.getPassword().equals(uPassword);
 
-		//Vincent's code
+	}
+
+	public static boolean doParentLogin(ParentRegister pr, String studentId, String regiId) {
+
+		return pr.getStudentId().equals(studentId) && pr.getRegiId().equals(regiId);
+
+	}
+	// Gillian's code
+
+	// Vincent's code
 	private static Student inputStudent() {
 
 		String name = Helper.readString("Enter name > ");
@@ -389,7 +360,7 @@ public class C206_CaseStudy {
 
 	public static void removeAStudent(ArrayList<Student> studentList) {
 		viewAllStudent(studentList);
-		int number = Helper.readInt("Enter student id to remove > ");
+		int number = Helper.readInt("Enter student NO to remove > ");
 		int index = number - 1;
 
 		if (index < studentList.size()) {
@@ -401,269 +372,290 @@ public class C206_CaseStudy {
 		}
 
 	}
-	//Vincent's code
-	
-	//Charis's code
-	//Add CCA details
-			
-		public static CCA inputCCADetails() {
-			String title = Helper.readString("Enter title > ");
-			String description = Helper.readString("Enter description > ");
-			int size = Helper.readInt("Enter class size > ");
-			String dayofWeek = Helper.readString("Enter day of week >");
-			String time = Helper.readString("Enter time >");
-			String venue = Helper.readString("Enter venue >");
-			String inCharge = Helper.readString("Enter instructor-in-charge >");
-			String category = Helper.readString("Enter category >");
-						
-			CCA detail= new CCA(title, description, size, dayofWeek, time, venue, inCharge, category);
-			return detail;
-						
-		}
-		
-		public static void addCCADetails(ArrayList<CCA> ccaList, CCA detail) {
-						
-			ccaList.add(detail);
-			System.out.println("CCA added!");
-		}
-				
-		//View all CCAs
-		public static String retrieveAllCCA(ArrayList<CCA> ccaList) {
-			String output = "";
 
-			for (int i = 0; i < ccaList.size(); i++) {
+	public static void updateStudents(ArrayList<Student> studentList) {
+		int id = Helper.readInt("Enter Student ID > ");
 
-				output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
-						ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(),  ccaList.get(i).getDayOfWeek(),
-						ccaList.get(i).getTime(),ccaList.get(i).getVenue(),ccaList.get(i).getInstrcInCharge(),
-						ccaList.get(i).getCategory());
-				}
-					return output;
+		for (Student st : studentList) {
+
+			if (st.getId() == id) {
+
+				String grade = Helper.readString("Enter grade > ");
+				String classes = Helper.readString("Enter class > ");
+				String teacher = Helper.readString("Enter teacher > ");
+
+				st.setGrade(grade);
+				st.setTeacher(teacher);
+				st.setClasses(classes);
+
+				break;
+
+			} else {
+				System.out.println("Invalid student ID");
+				break;
 			}
-		public static void viewAllCCA(ArrayList<CCA> ccaList) {
-			C206_CaseStudy.setHeader("CCA LIST");
-			String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "TITLE",
-					"DESCRIPTION", "CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
-			 output += retrieveAllCCA(ccaList);	
-			System.out.println(output);
-		}
-					
-		//Delete CCA details
-		public static boolean removeCCAdetails(ArrayList<CCA> ccaList) {
-			viewAllCCA(ccaList);
-			boolean isDeleted = false;
-			String delTitle = Helper.readString("Enter CCA to delete >");
-						
-			for(int i=0; i<ccaList.size(); i++) {
-				CCA cca = ccaList.get(i);
-				if(cca.getTitle().equalsIgnoreCase(delTitle)){
-					isDeleted = true; 
-					ccaList.remove(i);
-					System.out.println(delTitle + " is deleted!");
-					break;
-				}
-				else {
-					isDeleted = false;
-				}
-							
-			}
-			return isDeleted;
-
-			}
-			//Charis code
-		
-		// fauzi's code
-		
-		public static void addParent(ArrayList<Parent> parentList, Parent p) {
-
-			parentList.add(p);
-
 		}
 
-		public static Parent inputParent(ArrayList<Student> studentList) {
+	}
 
-			int id = Helper.readInt("Enter student ID > ");
+	// Vincent's code
 
-			Parent p = null;
-			for (int i = 0; i < studentList.size(); i++) {
+	// Charis's code
+	// Add CCA details
 
-				if (id == studentList.get(i).getId()) {
+	public static CCA inputCCADetails() {
+		String title = Helper.readString("Enter title > ");
+		String description = Helper.readString("Enter description > ");
+		int size = Helper.readInt("Enter class size > ");
+		String dayofWeek = Helper.readString("Enter day of week >");
+		String time = Helper.readString("Enter time >");
+		String venue = Helper.readString("Enter venue >");
+		String inCharge = Helper.readString("Enter instructor-in-charge >");
+		String category = Helper.readString("Enter category >");
 
-					String name = Helper.readString("Enter name > ");
-					int phoneNumber = Helper.readInt("Enter phone number > ");
-					Random ran = new Random();
-					int regID = ran.nextInt(1000);
-					p = new Parent(name, phoneNumber, regID);
-					System.out.println("Your registration id is "+ regID);
-					System.out.println("Parent added");
-					break;
+		CCA detail = new CCA(title, description, size, dayofWeek, time, venue, inCharge, category);
+		return detail;
 
-				}
+	}
 
-				else if (id != studentList.get(i).getId()) {
-					System.out.println("Invalid student ID");
-					break;
-				}
+	public static void addCCADetails(ArrayList<CCA> ccaList, CCA detail) {
+
+		ccaList.add(detail);
+		System.out.println("CCA added!");
+	}
+
+	// View all CCAs
+	public static String retrieveAllCCA(ArrayList<CCA> ccaList) {
+		String output = "";
+
+		for (int i = 0; i < ccaList.size(); i++) {
+
+			output += String.format("%-15s %-60s %-20d %-15s %-15s %-20s %-30s %-25s\n", ccaList.get(i).getTitle(),
+					ccaList.get(i).getDescription(), ccaList.get(i).getClassSize(), ccaList.get(i).getDayOfWeek(),
+					ccaList.get(i).getTime(), ccaList.get(i).getVenue(), ccaList.get(i).getInstrcInCharge(),
+					ccaList.get(i).getCategory());
+		}
+		return output;
+	}
+
+	public static void viewAllCCA(ArrayList<CCA> ccaList) {
+		C206_CaseStudy.setHeader("CCA LIST");
+		String output = String.format("%-15s %-60s %-20s %-15s %-15s %-20s %-30s %-25s\n", "TITLE", "DESCRIPTION",
+				"CLASS SIZE", "CCA DAY", "TIME", "VENUE", "INSTRUCTOR-IN-CHARGE", "CATEGORY");
+		output += retrieveAllCCA(ccaList);
+		System.out.println(output);
+	}
+
+	// Delete CCA details
+	public static boolean removeCCAdetails(ArrayList<CCA> ccaList) {
+		viewAllCCA(ccaList);
+		boolean isDeleted = false;
+		String delTitle = Helper.readString("Enter CCA to delete >");
+
+		for (int i = 0; i < ccaList.size(); i++) {
+			CCA cca = ccaList.get(i);
+			if (cca.getTitle().equalsIgnoreCase(delTitle)) {
+				isDeleted = true;
+				ccaList.remove(i);
+				System.out.println(delTitle + " is deleted!");
+				break;
+			} else {
+				isDeleted = false;
 			}
 
-			return p;
+		}
+		return isDeleted;
+
+	}
+	// Charis code
+
+	// fauzi's code
+
+	public static void addParent(ArrayList<Parent> parentList, Parent p) {
+
+		parentList.add(p);
+
+	}
+
+	public static Parent inputParent(ArrayList<Student> studentList) {
+
+		int id = Helper.readInt("Enter student ID > ");
+
+		Parent p = null;
+		for (int i = 0; i < studentList.size(); i++) {
+
+			if (id == studentList.get(i).getId()) {
+
+				String name = Helper.readString("Enter name > ");
+				int phoneNumber = Helper.readInt("Enter phone number > ");
+				Random ran = new Random();
+				int regID = ran.nextInt(1000);
+				p = new Parent(name, phoneNumber, regID);
+				System.out.println("Your registration id is " + regID);
+				System.out.println("Parent added");
+				break;
+
+			}
+
+			else if (id != studentList.get(i).getId()) {
+				System.out.println("Invalid student ID");
+				break;
+			}
 		}
 
-		  public static void viewAllParent(ArrayList<Parent> parentList) {
-		    C206_CaseStudy.setHeader("Parent LIST");
-		    String output = String.format("%-10s %-30s %-30s \n", "NAME", "PHONE NUMBER" , "REGISTRATION ID");
-		    output += retrieveAllParent(parentList);
-		    System.out.println(output);
-		  }
+		return p;
+	}
 
-		  public static String retrieveAllParent(ArrayList<Parent> parentList) {
-		    String output = "";
+	public static void viewAllParent(ArrayList<Parent> parentList) {
+		C206_CaseStudy.setHeader("Parent LIST");
+		String output = String.format("%-10s %-30s %-30s \n", "NAME", "PHONE NUMBER", "REGISTRATION ID");
+		output += retrieveAllParent(parentList);
+		System.out.println(output);
+	}
 
-		    for (int i = 0; i < parentList.size(); i++) {
+	public static String retrieveAllParent(ArrayList<Parent> parentList) {
+		String output = "";
 
-		      output += String.format("%-10s %-30d %-30d \n", parentList.get(i).getName(),
-		          parentList.get(i).getPhoneNumber(), parentList.get(i).getRegID());
-		          
-		          
-		    }
-		    return output;
+		for (int i = 0; i < parentList.size(); i++) {
 
-		  }
-		  
-		  public static boolean deleteParentAccount(ArrayList<Parent> parentList ) {
-		      viewAllParent(parentList);
-		      boolean isDeleted = false;
-		      
-		      String delParent = Helper.readString("Enter name to delete >");
-		      
-		      for(int i=0; i < parentList.size(); i++) {
-		      //String nameDeleted = parentList.get(i).getName();
-		        if(delParent.equalsIgnoreCase(parentList.get(i).getName())){ 
-		          isDeleted = true; 
-		          parentList.remove(i);
-		          System.out.println(delParent + " is deleted!");
-		          break;
-		        }
-		        else {
-		          isDeleted = false;
-		        }
-		        
-		      }
-		      return isDeleted;
+			output += String.format("%-10s %-30d %-30d \n", parentList.get(i).getName(),
+					parentList.get(i).getPhoneNumber(), parentList.get(i).getRegID());
 
-		    }
-		  
-		  // fauzi's code
+		}
+		return output;
 
-		  //caroline's code
+	}
 
-		  private static Category inputCategory() {
+	public static boolean deleteParentAccount(ArrayList<Parent> parentList) {
+		viewAllParent(parentList);
+		boolean isDeleted = false;
 
-			  String name = Helper.readString("Enter Category Name > ");
-			  String desc = Helper.readString("Enter Category Description > ");
+		String delParent = Helper.readString("Enter name to delete >");
 
-			  Category c = new Category(name, desc);
-			  return c;
+		for (int i = 0; i < parentList.size(); i++) {
+			// String nameDeleted = parentList.get(i).getName();
+			if (delParent.equalsIgnoreCase(parentList.get(i).getName())) {
+				isDeleted = true;
+				parentList.remove(i);
+				System.out.println(delParent + " is deleted!");
+				break;
+			} else {
+				isDeleted = false;
+			}
 
-		  }
+		}
+		return isDeleted;
 
-		  public static void addCategory(ArrayList<Category> categoryList, Category c) {
+	}
 
-			  categoryList.add(c);
-			  System.out.println("CCA Category added!");
-		  }
+	// fauzi's code
 
-		  public static void viewAllCategories(ArrayList<Category> categoryList) {
-			  setHeader("CATEGORY LIST");
-			  String output = String.format("%-10s %-30s\n", "NAME", "DESCRIPTION");
-			  output += retrieveAllCategories(categoryList);
-			  System.out.println(output);
-		  }
+	// caroline's code
 
-		  public static String retrieveAllCategories(ArrayList<Category> categoryList) {
+	private static Category inputCategory() {
 
-			  String output = "";
+		String name = Helper.readString("Enter Category Name > ");
+		String desc = Helper.readString("Enter Category Description > ");
 
-			  for (int i = 0; i < categoryList.size(); i++) {
+		Category c = new Category(name, desc);
+		return c;
 
-				  String name = categoryList.get(i).getCategoryName();
-				  String desc = categoryList.get(i).getCategoryDesc();
-				  output += String.format("%-10s %-30s\n", name, desc);
+	}
 
-			  }
+	public static void addCategory(ArrayList<Category> categoryList, Category c) {
 
-			  return output;
+		categoryList.add(c);
+		System.out.println("CCA Category added!");
+	}
 
-		  }
+	public static void viewAllCategories(ArrayList<Category> categoryList) {
+		setHeader("CATEGORY LIST");
+		String output = String.format("%-10s %-30s\n", "NAME", "DESCRIPTION");
+		output += retrieveAllCategories(categoryList);
+		System.out.println(output);
+	}
 
-		  public static boolean removeCategory(ArrayList<Category> categoryList ) {
+	public static String retrieveAllCategories(ArrayList<Category> categoryList) {
 
-			  viewAllCategories(categoryList);
-			  boolean isDeleted = false;
+		String output = "";
 
-			  String delCategory = Helper.readString("Enter category name to delete > ");
+		for (int i = 0; i < categoryList.size(); i++) {
 
-			  for (int i = 0; i < categoryList.size(); i++) {
+			String name = categoryList.get(i).getCategoryName();
+			String desc = categoryList.get(i).getCategoryDesc();
+			output += String.format("%-10s %-30s\n", name, desc);
 
-				  String name = categoryList.get(i).getCategoryName();
+		}
 
-				  if(delCategory.equalsIgnoreCase(name)) { 
+		return output;
 
-					  isDeleted = true; 
-					  categoryList.remove(i);
-					  System.out.println(delCategory + " is deleted!");
-					  break;
-				  }
-				  else {
-					  isDeleted = false;
-				  }
+	}
 
-			  }
-			  return isDeleted;
+	public static boolean removeCategory(ArrayList<Category> categoryList) {
 
-		  }
+		viewAllCategories(categoryList);
+		boolean isDeleted = false;
 
-		  // caroline's code
-		  
-		  // Gillian's code
+		String delCategory = Helper.readString("Enter category name to delete > ");
 
-		  public static void addStudentCCA(ArrayList<RegisteredStudents> studentCCAList, RegisteredStudents detail) {
+		for (int i = 0; i < categoryList.size(); i++) {
 
-			  studentCCAList.add(detail);
-			  System.out.println("Registered Students added!");
-			  
-		  }
+			String name = categoryList.get(i).getCategoryName();
 
-		  public static String retrieveAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
-			  String output = "";
+			if (delCategory.equalsIgnoreCase(name)) {
 
-			  for (RegisteredStudents rs : studentCCAList) {
+				isDeleted = true;
+				categoryList.remove(i);
+				System.out.println(delCategory + " is deleted!");
+				break;
+			} else {
+				isDeleted = false;
+			}
 
-				  output += String.format("%-5d %-10s %-10s\n", rs.getRegiStudentId(), rs.getRegiName(), rs.getRegiCCA());
+		}
+		return isDeleted;
 
-			  }
+	}
 
-			  return output;
-		  }
+	// caroline's code
 
-		  public static void viewAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
-			  C206_CaseStudy.setHeader("Registered studets LIST");
-			  String output = String.format("%-5s %-10s %-10s \n", "ID", "NAME", "CCA");
-			  output += retrieveAllStudentCCA(studentCCAList);
-			  System.out.println(output);
+	// Gillian's code
 
-		  }
+	public static void addStudentCCA(ArrayList<RegisteredStudents> studentCCAList, RegisteredStudents detail) {
 
-		  public static RegisteredStudents inputRegisterStudent() {
-			  int id = Helper.readInt("Enter ID > ");
-			  String name = Helper.readString("Enter Student's Name > ");
-			  String cca = Helper.readString("Enter Student's chosen CCA > ");
+		studentCCAList.add(detail);
+		System.out.println("Registered Students added!");
 
-			  RegisteredStudents detail = new RegisteredStudents(id, name, cca);
-			  return detail;
+	}
 
+	public static String retrieveAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
+		String output = "";
 
-			  // Gillian's code
-		  }
-        }
-		  
+		for (RegisteredStudents rs : studentCCAList) {
+
+			output += String.format("%-5d %-10s %-10s\n", rs.getRegiStudentId(), rs.getRegiName(), rs.getRegiCCA());
+
+		}
+
+		return output;
+	}
+
+	public static void viewAllStudentCCA(ArrayList<RegisteredStudents> studentCCAList) {
+		C206_CaseStudy.setHeader("Registered studets LIST");
+		String output = String.format("%-5s %-10s %-10s \n", "ID", "NAME", "CCA");
+		output += retrieveAllStudentCCA(studentCCAList);
+		System.out.println(output);
+
+	}
+
+	public static RegisteredStudents inputRegisterStudent() {
+		int id = Helper.readInt("Enter ID > ");
+		String name = Helper.readString("Enter Student's Name > ");
+		String cca = Helper.readString("Enter Student's chosen CCA > ");
+
+		RegisteredStudents detail = new RegisteredStudents(id, name, cca);
+		return detail;
+
+		// Gillian's code
+	}
+}
