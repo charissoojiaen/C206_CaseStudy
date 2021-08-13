@@ -133,6 +133,7 @@ public class C206_CaseStudyTest {
 	@Test
 	
 	public void updateStudents() {
+			assertNotNull("Test if there is valid Student arraylist to retrieve item", studentList);
 		
 			C206_CaseStudy.addStudents(studentList, stu1);
 			C206_CaseStudy.addStudents(studentList, stu2);
@@ -143,21 +144,19 @@ public class C206_CaseStudyTest {
 			stu1.setGrade("P6");
 			stu1.setTeacher("K");
 			assertNotEquals("Check if after setting new values, the content is not same", stu1);
-			assertTrue(true);
 			
 			stu2.setClasses("PB12");
 			stu2.setGrade("P5");
 			stu2.setTeacher("Ka");
 			assertNotEquals("Check if after setting new values, the content is not same", stu2);
-			assertTrue(true);
-			
+		
 			stu3.setClasses("FC12");
 			stu3.setGrade("P1");
 			stu3.setTeacher("LO");
 			assertNotEquals("Check if after setting new values, the content is not same", stu3);
-			assertTrue(true);
 			
-			assertEquals("Check if size is still the same to ensure that nothing is added",3, studentList.size());
+			
+		
 		}
 
 
