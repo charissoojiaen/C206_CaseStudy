@@ -211,12 +211,17 @@ public class C206_CaseStudy {
 							// VIEW STUDENTS IN A CCA
 							C206_CaseStudy.setHeader("UPDATE ");
 							System.out.println("1. Update Student");
+							System.out.println("2. Update CCA Category");
 
 							int updateType = Helper.readInt("Enter option to update ______ > ");
 
 							if (updateType == 1) {
 								// update Student
 								updateStudents(studentList);
+								
+							} else if (updateType == 2) {
+								//update category
+								updateCategory(categoryList);
 
 							} else {
 								System.out.println("Invalid type");
@@ -546,7 +551,7 @@ public class C206_CaseStudy {
 
 	public static void viewAllCategories(ArrayList<Category> categoryList) {
 		setHeader("CATEGORY LIST");
-		String output = String.format("%-10s %-30s\n", "NAME", "DESCRIPTION");
+		String output = String.format("%-20s %-30s\n", "NAME", "DESCRIPTION");
 		output += retrieveAllCategories(categoryList);
 		System.out.println(output);
 	}
@@ -559,7 +564,7 @@ public class C206_CaseStudy {
 
 			String name = categoryList.get(i).getCategoryName();
 			String desc = categoryList.get(i).getCategoryDesc();
-			output += String.format("%-10s %-30s\n", name, desc);
+			output += String.format("%-20s %-30s\n", name, desc);
 
 		}
 
@@ -591,6 +596,28 @@ public class C206_CaseStudy {
 		}
 		return isDeleted;
 
+	}
+	
+	public static void updateCategory(ArrayList<Category> categoryList) {
+		C206_CaseStudy.setHeader("UPDATE CATEGORY");
+		viewAllCategories(categoryList);
+		String name = Helper.readString("Enter Category Name > ");
+		
+		for (Category cat : categoryList) {
+			if (cat.getCategoryName().equalsIgnoreCase(name)) {
+				String newName = Helper.readString("Enter new name > ");
+				String newDesc = Helper.readString("Enter new description > ");
+				
+				cat.setCategoryName(newName);
+				cat.setCategoryDesc(newDesc);
+
+				break;
+				
+			} else {
+				System.out.println("Invalid Category!");
+				break;
+			}
+		}
 	}
 
 	// caroline's code
