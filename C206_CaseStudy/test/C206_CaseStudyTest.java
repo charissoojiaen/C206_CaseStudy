@@ -231,6 +231,76 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that ccaList arraylist size is 0", 0, ccaList.size());
 	}
 	
+		@Test
+	public void addCategory() {
+		
+		assertNotNull("Check if there is valid Category arraylist to add to", categoryList);
+		//Given an empty list, after adding 1 item, the size of the list is 1 - normal
+		//The item just added is as same as the first item of the list
+		C206_CaseStudy.addCategory(categoryList, cat1);
+		assertEquals("Check that categoryList arraylist size is 1", 1, categoryList.size());
+		assertSame("Check that category is added", cat1, categoryList.get(0));
+		
+		//Add another item. test The size of the list is 2? -normal
+		//The item just added is as same as the second item of the list
+		C206_CaseStudy.addCategory(categoryList, cat2);
+		assertEquals("Check that categoryList arraylist size is 2", 2, categoryList.size());
+		assertSame("Check that category is added", cat2, categoryList.get(1));
+		
+		C206_CaseStudy.addCategory(categoryList, cat3);
+		assertEquals("Check that categoryList arraylist size is 3", 3, categoryList.size());
+		assertSame("Check that category is added", cat3, categoryList.get(2));
+		
+	}
+	
+	@Test
+	public void retrieveAllCategories() {
+		// Test if Item list is not null but empty -boundary
+		assertNotNull("Test if there is valid Category arraylist to retrieve categories", categoryList);
+		
+		//test if the list of student retrieved from the case study is empty - boundary
+		String allCat= C206_CaseStudy.retrieveAllCategories(categoryList);
+		String testOutput = "";
+		assertEquals("Test that viewAllCategories is empty", testOutput, allCat);
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addCategory(categoryList, cat1);
+		C206_CaseStudy.addCategory(categoryList, cat2);
+		C206_CaseStudy.addCategory(categoryList, cat3);
+		assertEquals("Test that Category arraylist size is 3", 3, categoryList.size());
+		
+		//test if the expected output string same as the list of CCAs retrieved from the CaseStudy	
+		allCat = C206_CaseStudy.retrieveAllCategories(categoryList);
+		testOutput = String.format("%-20s %-30s\n", "Sports", "CCAs with Physical Activity");
+		testOutput += String.format("%-20s %-30s\n", "Recreation", "CCAs involved with leisure hobbies");
+		testOutput += String.format("%-20s %-30s\n", "Uniform Groups", "CCAs targetting Discipline and Uniformity");
+	
+		assertEquals("Test that ViewAllCategory is same", testOutput, allCat);
+
+	}
+	
+	@Test
+	public void removeCategory() {
+		assertNotNull("Test if there is valid Category arraylist to retrieve item", categoryList);
+		
+		//test if the list of category retrieved from the case study is empty - boundary
+		
+		//Given an empty list, after adding 3 items, test if the size of the list is 3 - normal
+		C206_CaseStudy.addCategory(categoryList, cat1);
+		C206_CaseStudy.addCategory(categoryList, cat2);
+		C206_CaseStudy.addCategory(categoryList, cat3);
+		assertEquals("Test that categoryList arraylist size is 3", 3, categoryList.size());
+		
+		categoryList.remove(cat1);
+		assertEquals("Check that categoryList arraylist size is 2", 2, categoryList.size());
+		
+		categoryList.remove(cat2);
+		assertEquals("Check that categoryList arraylist size is 1", 1, categoryList.size());
+		
+		categoryList.remove(cat3);
+		assertEquals("Check that categoryList arraylist size is 0", 0, categoryList.size());
+	}
+	
 	
 	
 	
