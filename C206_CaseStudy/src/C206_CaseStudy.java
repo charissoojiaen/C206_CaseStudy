@@ -223,6 +223,8 @@ public class C206_CaseStudy {
 								} else {
 									System.out.println("Invalid type");
 								}
+							} else if (option == 4 (
+								viewAllStudentCCA(studentCCAList);
 
 							} else if (option == 5) {
 								// VIEW STUDENTS IN A CCA
