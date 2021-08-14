@@ -22,5 +22,13 @@ public class Category {
 		String output = "";
 		return output;
 	}
+	
+	public void setCategoryName(String name) {
+		this.name = name;
+	}
+	
+	public void setCategoryDesc(String description) {
+		this.description = description;
+	}
 
 }
