@@ -36,6 +36,7 @@ public class C206_CaseStudy {
 
 		// Gillian's code
 		ArrayList<ParentRegister> prList = new ArrayList<ParentRegister>();
+		prList.add(new ParentRegister("678", "8907");
 		ParentRegister pr = new ParentRegister("123", "2345");
 
 		ArrayList<RegisteredStudents> studentCCAList = new ArrayList<RegisteredStudents>();
