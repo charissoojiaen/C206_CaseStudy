@@ -301,6 +301,31 @@ public class C206_CaseStudyTest {
 		assertEquals("Check that categoryList arraylist size is 0", 0, categoryList.size());
 	}
 	
+	@Test
+	public void updateCategory() {
+		assertNotNull("Test if there is valid Category arraylist to retrieve item", categoryList);
+	
+		C206_CaseStudy.addCategory(categoryList, cat1);
+		C206_CaseStudy.addCategory(categoryList, cat2);
+		C206_CaseStudy.addCategory(categoryList, cat3);
+		assertEquals("Test that Category arraylist size is 3", 3, categoryList.size());
+		
+		cat1.setCategoryName("Holy Moly");
+		cat1.setCategoryDesc("Oh Cow");
+		assertNotEquals("Check if after setting new values, the content is not same", cat1);
+		
+		cat2.setCategoryName("Outdoor Adventure");
+		cat2.setCategoryDesc("Sporty sports sports");
+		assertNotEquals("Check if after setting new values, the content is not same", cat2);
+	
+		cat3.setCategoryName("Music to my ears");
+		cat3.setCategoryDesc("Beautiful Instruments");
+		assertNotEquals("Check if after setting new values, the content is not same", cat3);
+		
+		
+	
+	}
+	
 	
 	
 	
